@@ -9,6 +9,49 @@
         <script>
 
             // TODO: Add code to check answers to questions
+            var btns = ['m1', 'm2', 'm3', 'm4', 'm5'];
+            var red = '#ff0000';
+            var green = '#00ff00';
+            var blue = '#d9edff';
+
+            function clicked (btn)
+            {
+                for (var i = 0; i < 5; i++)
+                {
+                    if (btns[i] != btn)
+                    {
+                        document.getElementById(btns[i]).style.backgroundColor = blue;
+                    }
+                    else
+                    {
+                        if (btns[i] == btn && btn != btns[4])
+                        {
+                            document.getElementById(btns[i]).style.backgroundColor = red;
+                            document.getElementById('q1').innerHTML = "Incorrect";
+                        }
+                        else
+                        {
+                            document.getElementById(btns[i]).style.backgroundColor = green;
+                            document.getElementById('q1').innerHTML = "Correct!";
+                        }
+                    }
+                }
+            }
+            
+            function clicked2 ()
+            {
+                var free = document.getElementById('free').value;
+                if (free.toLowerCase() == "switzerland")
+                {
+                    document.getElementById('free').style.backgroundColor = green;
+                    document.getElementById('q2').innerHTML = "Correct!";
+                }
+                else 
+                {
+                    document.getElementById('free').style.backgroundColor = red;
+                    document.getElementById('q2').innerHTML = "Incorrect";
+                }
+            }
 
         </script>
 
@@ -26,7 +69,13 @@
                 <hr>
 
                 <!-- TODO: Add multiple choice question here -->
-
+                <h3>What is the approximate Ratio of people to sheep in New Zealand?</h3>
+                <div id="q1"></div>
+                <input type="submit" value="6 people per 1 sheep" id="m1" onclick=clicked('m1')>
+                <input type="submit" value="3 people per 1 sheep" id="m2" onclick=clicked('m2')>
+                <input type="submit" value="1 people per 1 sheep" id="m3" onclick=clicked('m3')>
+                <input type="submit" value="1 people per 3 sheep" id="m4" onclick=clicked('m4')>
+                <input type="submit" value="1 people per 6 sheep" id="m5" onclick=clicked('m5')>
             </div>
 
             <div class="section">
@@ -34,7 +83,9 @@
                 <hr>
 
                 <!-- TODO: Add free response question here -->
-
+                <h3>In which country is it illegal to own only one guinea pig, as a lone guinea pig might get lonely?</h3>
+                <div id="q2"></div>
+                <input type="text" id="free"><input type="submit" value="Check Answer" onclick=clicked2()>
             </div>
 
         </div>
